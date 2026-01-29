@@ -1,0 +1,49 @@
+# Maven
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.jar
+
+# IDE
+.idea/
+*.iml
+.vscode/
+.eclipse/
+.settings/
+.classpath
+.project
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Java
+*.class
+*.log
+*.jar
+*.war
+*.ear
+hs_err_pid*
+
+# GWT
+.gwt/
+gwt-unitCache/
+war/WEB-INF/classes/
+war/WEB-INF/deploy/
+
+# Build outputs
+dist/
+build/
+
+# Node (if using npm for any tools)
+node_modules/
+package-lock.json
