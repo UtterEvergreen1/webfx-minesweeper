@@ -77,14 +77,25 @@ cd webfx-minesweeper
 mvn clean install
 ```
 
-### 3. Run on Desktop (OpenJFX)
+### 3. Run Locally (Development Mode)
+
+The easiest way to test the game locally is using GWT development mode with hot reload:
 
 ```bash
-cd webfx-minesweeper-application-openjfx
-mvn javafx:run
+cd webfx-minesweeper-application-gwt
+mvn gwt:devmode
 ```
 
-### 4. Build for Web (GWT)
+This starts a local development server at http://localhost:9876. Open that URL in your browser, click the module link, and follow the instructions to enable dev mode.
+
+**Troubleshooting**: If you get "Address already in use" error, kill any existing GWT processes:
+```bash
+pkill -f "gwt.*devmode"
+```
+
+**Note**: For a native desktop JavaFX build, you would need to copy image resources from the GWT module to the OpenJFX module, which is beyond the scope of this quick start.
+
+### 4. Build for Web (Production)
 
 ```bash
 cd webfx-minesweeper-application-gwt
@@ -107,14 +118,6 @@ python3 -m http.server 8000
 
 Then open http://localhost:8000 in your browser.
 
-### 6. Development Mode (Web with Hot Reload)
-
-```bash
-cd webfx-minesweeper-application-gwt
-mvn gwt:devmode
-```
-
-This starts the GWT development server at http://localhost:8888
 
 ## Code Highlights
 

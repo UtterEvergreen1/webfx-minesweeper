@@ -198,7 +198,6 @@
             <groupId>dev.webfx</groupId>
             <artifactId>webfx-platform-polyfillcompat</artifactId>
             <version>0.1.0-SNAPSHOT</version>
-            <scope>provided</scope>
             <classifier>sources</classifier>
         </dependency>
 
