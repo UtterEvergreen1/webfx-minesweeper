@@ -1,0 +1,4 @@
+# Map all email addresses to the canonical identity
+Daniel <anonymous@example.com> Daniel <daniel@192-168-1-135.lan>
+Daniel <anonymous@example.com> Daniel <daniel@daniels-mbp.lan>
+Daniel <anonymous@example.com> Daniel <daniel@Daniels-MacBook-Pro.local>
