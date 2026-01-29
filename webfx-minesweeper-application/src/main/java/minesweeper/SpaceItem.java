@@ -26,7 +26,7 @@ public class SpaceItem {
      * @return The image for an unrevealed mine.
      */
     static public Image getUnrevealedMineImage() {
-        return new Image("images/minesweeper-basic/mine-grey.png");
+        return ImagePreloader.getImage("images/minesweeper-basic/mine-grey.png");
     }
 
     /**
@@ -34,7 +34,7 @@ public class SpaceItem {
      * @return The image for a revealed mine.
      */
     static public Image getRevealedMineImage() {
-        return new Image("images/minesweeper-basic/mine-red.png");
+        return ImagePreloader.getImage("images/minesweeper-basic/mine-red.png");
     }
 
     /**
@@ -42,7 +42,7 @@ public class SpaceItem {
      * @return The image for a flag.
      */
     static public Image getFlagImage() {
-        return new Image("images/minesweeper-basic/flag.png");
+        return ImagePreloader.getImage("images/minesweeper-basic/flag.png");
     }
 
     /**
@@ -50,7 +50,7 @@ public class SpaceItem {
      * @return The image for a unrevealed space.
      */
     static public Image getCoverImage() {
-        return new Image("images/minesweeper-basic/cover.png");
+        return ImagePreloader.getImage("images/minesweeper-basic/cover.png");
     }
 
     /**
@@ -58,7 +58,7 @@ public class SpaceItem {
      * @return The image for a non-mine revealed space.
      */
     static public Image getNumImage(int num) {
-        return new Image("images/minesweeper-basic/" + num + ".png");
+        return ImagePreloader.getImage("images/minesweeper-basic/" + num + ".png");
     }
 
     /**

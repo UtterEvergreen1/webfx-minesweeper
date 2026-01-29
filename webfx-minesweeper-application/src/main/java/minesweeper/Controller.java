@@ -80,7 +80,7 @@ public class Controller {
         }
 
         this.setNumMinesLeft(this.difficulty.getMines());
-        this.smileyImage.setImage(new Image("images/minesweeper-basic/face-smile.png"));
+        this.smileyImage.setImage(ImagePreloader.getImage("images/minesweeper-basic/face-smile.png"));
         for (ImageView imageView : this.boardMap.keySet()) {
             imageView.setImage(SpaceItem.getCoverImage());
         }
@@ -146,9 +146,9 @@ public class Controller {
         int tens = (this.time % 100) / 10;
         int ones = this.time % 10;
 
-        this.timeElapsed[0].setImage(new Image("images/digits/" + hundreds + ".png"));
-        this.timeElapsed[1].setImage(new Image("images/digits/" + tens + ".png"));
-        this.timeElapsed[2].setImage(new Image("images/digits/" + ones + ".png"));
+        this.timeElapsed[0].setImage(ImagePreloader.getImage("images/digits/" + hundreds + ".png"));
+        this.timeElapsed[1].setImage(ImagePreloader.getImage("images/digits/" + tens + ".png"));
+        this.timeElapsed[2].setImage(ImagePreloader.getImage("images/digits/" + ones + ".png"));
     }
 
     /**
@@ -161,12 +161,12 @@ public class Controller {
         int tens = Math.abs((numMinesLeft % 100) / 10);
         int ones = Math.abs(numMinesLeft % 10);
         if (numMinesLeft < 0) {
-            this.minesLeft[0].setImage(new Image("images/digits/neg.png"));
+            this.minesLeft[0].setImage(ImagePreloader.getImage("images/digits/neg.png"));
         } else {
-            this.minesLeft[0].setImage(new Image("images/digits/" + hundreds + ".png"));
+            this.minesLeft[0].setImage(ImagePreloader.getImage("images/digits/" + hundreds + ".png"));
         }
-        this.minesLeft[1].setImage(new Image("images/digits/" + tens + ".png"));
-        this.minesLeft[2].setImage(new Image("images/digits/" + ones + ".png"));
+        this.minesLeft[1].setImage(ImagePreloader.getImage("images/digits/" + tens + ".png"));
+        this.minesLeft[2].setImage(ImagePreloader.getImage("images/digits/" + ones + ".png"));
     }
 
     /**
@@ -315,10 +315,10 @@ public class Controller {
                 imageView.setImage(SpaceItem.getUnrevealedMineImage());
             }
             else if (space.isFlagged() && !space.isMine()) {
-                imageView.setImage(new Image("images/minesweeper-basic/mine-misflagged.png"));
+                imageView.setImage(ImagePreloader.getImage("images/minesweeper-basic/mine-misflagged.png"));
             }
         }
-        this.smileyImage.setImage(new Image("images/minesweeper-basic/face-dead.png"));
+        this.smileyImage.setImage(ImagePreloader.getImage("images/minesweeper-basic/face-dead.png"));
         this.timeline.stop();
     }
 
@@ -327,7 +327,7 @@ public class Controller {
      */
     private void setGameWon() {
         this.gameWon = true;
-        this.smileyImage.setImage(new Image("images/minesweeper-basic/face-win.png"));
+        this.smileyImage.setImage(ImagePreloader.getImage("images/minesweeper-basic/face-win.png"));
         this.timeline.stop();
 
         if (HighScore.isHighScore(this.time, this.difficulty)) {
@@ -358,7 +358,7 @@ public class Controller {
         if (this.gameOver || this.gameWon || !leftClick) {
             return;
         }
-        this.smileyImage.setImage(new Image("images/minesweeper-basic/face-O.png"));
+        this.smileyImage.setImage(ImagePreloader.getImage("images/minesweeper-basic/face-O.png"));
 
         Pair<Integer, Integer> coords = this.boardMap.get(imageView);
         SpaceItem space = this.boardState[coords.getKey()][coords.getValue()];
@@ -376,7 +376,7 @@ public class Controller {
         if (this.gameOver || this.gameWon) {
             return;
         }
-        this.smileyImage.setImage(new Image("images/minesweeper-basic/face-smile.png"));
+        this.smileyImage.setImage(ImagePreloader.getImage("images/minesweeper-basic/face-smile.png"));
 
         Pair<Integer, Integer> coords = this.boardMap.get(imageView);
         SpaceItem space = this.boardState[coords.getKey()][coords.getValue()];

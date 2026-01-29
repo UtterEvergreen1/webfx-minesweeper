@@ -46,7 +46,7 @@ public class MainApplication extends Application {
         this.makeDigits(header, this.controller.getMinesLeft(), true);
 
         // Smiley face
-        Image smileyImage = new Image("images/minesweeper-basic/face-smile.png");
+        Image smileyImage = ImagePreloader.getImage("images/minesweeper-basic/face-smile.png");
         ImageView smileyImageView = new ImageView(smileyImage);
         this.controller.setSmileyImage(smileyImageView);
         smileyImageView.setFitWidth(52);
@@ -349,6 +349,9 @@ public class MainApplication extends Application {
      * @param difficulty The difficulty level to set.
      */
     private void setDifficulty(Difficulty difficulty) {
+        // Preload all images when difficulty is selected to prevent lag during gameplay
+        ImagePreloader.preloadAllImages();
+
         this.controller.setDifficulty(difficulty);
         this.controller.clearBoardMap();
         Pane boardPane = setupBoard(difficulty.getRows(), difficulty.getCols(), difficulty.getTileSize());
@@ -367,7 +370,7 @@ public class MainApplication extends Application {
      * @return The ImageView for the space.
      */
     private ImageView getSpaceView(int size) {
-        Image image = new Image("images/minesweeper-basic/cover.png");
+        Image image = ImagePreloader.getImage("images/minesweeper-basic/cover.png");
         ImageView imageView = new ImageView(image);
         imageView.setFitWidth(size);
         imageView.setFitHeight(size);
@@ -417,7 +420,7 @@ public class MainApplication extends Application {
         HBox digitsLeft = new HBox();
         // fill the width
         for (int imageNum = 0; imageNum < 3; imageNum++) {
-            Image image = new Image("images/digits/0.png");
+            Image image = ImagePreloader.getImage("images/digits/0.png");
             ImageView imageView = new ImageView(image);
             imageView.setFitWidth(28);
             imageView.setFitHeight(50);
