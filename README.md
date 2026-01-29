@@ -16,9 +16,8 @@ A classic Minesweeper game built with JavaFX and compiled to web using WebFX. Pl
 
 ## Game Controls
 
-- **Left Click**: Reveal a tile
+- **Left Click**: Reveal a tile - flood fill for empty spaces - clicked numbered tiles reveals adjacent tiles when flags match mine count
 - **Right Click**: Place/remove a flag
-- **Middle Click**: Quick reveal (chord) - reveals adjacent tiles when flags match mine count
 - **Smiley Button**: Reset the game
 - **H Key**: Toggle high scores display
 
@@ -119,22 +118,51 @@ python3 -m http.server 8000
 Then open http://localhost:8000 in your browser.
 
 
-## Code Highlights
-
-### WebFX-Specific Features
-
-- **Console Logging**: Uses `dev.webfx.platform.console.Console.log()` for browser console output
-- **Storage API**: Uses `dev.webfx.platform.storage` for persistent high scores across sessions
-- **Cross-Platform Images**: Images loaded with relative paths (`images/...`) work on both web and desktop
-- **Proper Sizing**: Uses `setMinWidth/setPrefWidth/setMaxWidth` for WebFX-compatible sizing
-
-### JavaFX Best Practices
-
-- **No CSS Strings**: All styling done via JavaFX API methods (`.setBackground()`, `.setBorder()`, etc.)
-- **Proper Layout**: Uses `StackPane`, `VBox`, `HBox`, and `GridPane` for responsive layouts
-- **Event Handling**: Separate handlers for `onMouseClicked`, `onMousePressed`, and `onMouseReleased`
-
 ## Development Notes
+
+### Project Features
+
+**Storage API**: High scores are persisted using WebFX's `dev.webfx.platform.storage` API
+- **Web**: Uses browser localStorage
+- **Desktop**: Uses local file system
+- Format: `[playerName, timeInSeconds, difficulty]`
+
+**Cross-Platform Images**: Images loaded with relative paths (`images/...`) work on both web and desktop
+
+**JavaFX Best Practices**:
+- All styling done via JavaFX API methods (`.setBackground()`, `.setBorder()`, etc.) instead of CSS strings
+- Proper layout hierarchy using `StackPane`, `VBox`, `HBox`, and `GridPane`
+- Event handling with separate `onMouseClicked`, `onMousePressed`, and `onMouseReleased` handlers
+
+### Adding Console Logging (Optional)
+
+If you want to add debug logging to the browser console, you'll need to:
+
+1. Add the dependency to `webfx-minesweeper-application/pom.xml`:
+```xml
+<dependency>
+    <groupId>dev.webfx</groupId>
+    <artifactId>webfx-platform-console</artifactId>
+    <version>0.1.0-SNAPSHOT</version>
+</dependency>
+```
+
+2. Add the module requirement to `webfx-minesweeper-application/src/main/java/module-info.java`:
+```java
+requires webfx.platform.console;
+```
+
+3. Use in your code:
+```java
+import dev.webfx.platform.console.Console;
+
+// In your methods
+Console.log("Debug message: " + someVariable);
+Console.warn("Warning message");
+Console.error("Error message");
+```
+
+The console output will appear in your browser's developer tools (F12).
 
 ### Image Resources
 
@@ -145,13 +173,6 @@ webfx-minesweeper-application-gwt/src/main/resources/public/images/
 └── digits/             # Seven-segment display digits
 ```
 
-### High Scores
-
-High scores are stored using WebFX's platform storage API:
-- **Web**: Browser localStorage
-- **Desktop**: Local file system
-
-Format: `[playerName, timeInSeconds, difficulty]`
 
 ## Browser Compatibility
 
@@ -187,6 +208,7 @@ This project is open source and available under the [MIT License](LICENSE).
 - Classic Minesweeper game mechanics from Microsoft Minesweeper
 - [WebFX Framework](https://webfx.dev/) for enabling JavaFX on the web
 - Tile graphics inspired by classic Windows Minesweeper
+- AI generated README content using Claude
 
 ## Contact
 
